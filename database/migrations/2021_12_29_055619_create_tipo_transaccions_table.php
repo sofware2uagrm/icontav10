@@ -16,7 +16,7 @@ class CreateTipoTransaccionsTable extends Migration
         Schema::create('tipo_transaccions', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion');
-            $table->integer('estado');
+            $table->integer('estados');
             $table->timestamps();
         });
     }
