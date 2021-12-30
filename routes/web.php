@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\GestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,12 @@ Route::get('/', function () {
     return redirect()->to(route('login'));
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('empresas', EmpresaController::class)->names('empresas');
+Route::resource('gestions', GestionController::class)->names('gestions');
+Route::get('datosdelaempresa',[ActualController::class,'empresaactual'])->name('datosdelaempresa');
+Route::get('gestiondelaempresa',[ActualController::class,'gestionactual'])->name('gestiondelaempresa');
