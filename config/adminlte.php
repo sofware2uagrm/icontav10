@@ -1,5 +1,8 @@
 <?php
-{{$anio= date("Y");}}
+{{$anio= date("Y");
+$url_leonel_empresas=asset('empresas');
+$url_leonel_gestions=asset('gestions');
+}}
 return [
 
     /*
@@ -369,12 +372,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Fecha De Inicio De Gestion Contable',
-                    'url'  => '#',
+                    'url'  => "$url_leonel_gestions",
                     'icon_color' => 'cyan',
                 ],
                 [
                     'text' => 'Datos Generales De La Empresa',
-                    'url'  => '#',
+                    'url'  => "$url_leonel_empresas",
                     'icon_color' => 'cyan',
                 ],
                 [
