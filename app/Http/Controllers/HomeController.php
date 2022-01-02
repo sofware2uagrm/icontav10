@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -12,11 +11,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    protected $usuario;
     public function __construct()
     {
         $this->middleware('auth');
-        $this->usuario= new User();
     }
 
     /**
@@ -26,8 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $dato=$this->usuario->get();
-        $datos=['datos'=>$dato];
-        echo view('home',$datos);
+        return view('home');
     }
 }
