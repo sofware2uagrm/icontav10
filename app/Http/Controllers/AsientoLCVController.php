@@ -15,7 +15,7 @@ class AsientoLCVController extends Controller
     }
     public function index()
     {
-        $datos= $this->asientoLCV->get();
+        $datos= $this->asiento_LCV->get();
        $dato = ['datos'=>$datos];
         echo view('configuracion_parametros_sistema/asientoLCV/asientoLCV',$dato);
     }
