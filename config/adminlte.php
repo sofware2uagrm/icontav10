@@ -1,7 +1,7 @@
 <?php
 {{$anio= date("Y");
-$url_leonel_empresas=asset('empresas');
-$url_leonel_gestions=asset('gestions');
+$url_leonel_empresas=Config('app.url').'/empresas';
+$url_leonel_gestions=Config('app.url').'/gestions';
 }}
 return [
 
