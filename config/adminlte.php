@@ -2,6 +2,7 @@
 {{$anio= date("Y");
 $url_leonel_empresas=Config('app.url').'/empresas';
 $url_leonel_gestions=Config('app.url').'/gestions';
+$url_lucas_moneda=Config('app.url').'moneda';
 }}
 return [
 
@@ -399,7 +400,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Configuracion de Parametros',
-                    'url'  => '#',
+                    'url'  => "$url_lucas_moneda",
                      'icon' => 'fas fa-tools',
                 ],
                 [
