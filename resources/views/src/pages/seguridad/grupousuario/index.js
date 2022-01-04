@@ -1,19 +1,18 @@
 
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 import { Button, Card, Col, Row, Table, Tooltip } from 'antd';
 import { EditOutlined, EyeOutlined } from '@ant-design/icons';
 
 import Swal from 'sweetalert2';
+import 'antd/dist/antd.css';
 
 function GrupoUsuarioIndex() {
-    const navigate = useNavigate();
     return (
         <>
             <GrupoUsuarioIndexPrivate 
-                navigate={navigate}
             />
         </>
     );
@@ -60,7 +59,7 @@ class GrupoUsuarioIndexPrivate extends Component {
                                     icon={<EditOutlined style={ { position: 'relative', top: -2, } } />} 
                                     onClick={ ( evt ) => {
                                         evt.preventDefault();
-                                        this.props.navigate( "/grupousuario/edit/" + record.grupousuario.idgrupousuario );
+                                        location.href = '/grupousuario/edit/' + record.grupousuario.idgrupousuario;
                                     } }
                                 />
                             </Tooltip>
@@ -69,7 +68,7 @@ class GrupoUsuarioIndexPrivate extends Component {
                                     icon={<EyeOutlined style={ { position: 'relative', top: -2, } } />} 
                                     onClick={ ( evt ) => {
                                         evt.preventDefault();
-                                        this.props.navigate( "/grupousuario/show/" + record.grupousuario.idgrupousuario );
+                                        location.href = '/grupousuario/show/' + record.grupousuario.idgrupousuario;
                                     } }
                                 />
                             </Tooltip>
@@ -142,7 +141,7 @@ class GrupoUsuarioIndexPrivate extends Component {
                         <Button type="primary" danger
                             onClick={ ( evt ) => {
                                 evt.preventDefault();
-                                this.props.navigate( "/grupousuario/create" );
+                                location.href = '/grupousuario/create';
                             } }
                         >
                             Nuevo
@@ -165,3 +164,8 @@ class GrupoUsuarioIndexPrivate extends Component {
 };
 
 export default GrupoUsuarioIndex;
+
+if (document.getElementById('GrupoUsuarioIndex')) {
+    ReactDOM.render(<GrupoUsuarioIndex />, document.getElementById('GrupoUsuarioIndex'));
+}
+

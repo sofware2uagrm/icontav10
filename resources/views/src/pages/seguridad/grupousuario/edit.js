@@ -1,21 +1,18 @@
 
 import React, { Component } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 import { Button, Card, Col, Row } from 'antd';
 
 import TextField from '@mui/material/TextField';
 import Swal from 'sweetalert2';
+import 'antd/dist/antd.css';
 
 function GrupoUsuarioEdit() {
-    const navigate = useNavigate();
-    const params = useParams();
     return (
         <>
             <GrupoUsuarioEditPrivate 
-                navigate={navigate}
-                params={params}
             />
         </>
     );
@@ -41,7 +38,8 @@ class GrupoUsuarioEditPrivate extends Component {
         this.get_data();
     };
     get_data( ) {
-        axios.get( "/api/grupousuario/edit/" + this.props.params.idgrupousuario ) . then ( ( resp ) => {
+        let idgrupousuario = document.getElementById('idgrupousuario').value;
+        axios.get( "/api/grupousuario/edit/" + idgrupousuario ) . then ( ( resp ) => {
             console.log(resp)
             if ( resp.data.rpta === 1 ) {
                 this.setState( {
@@ -99,10 +97,11 @@ class GrupoUsuarioEditPrivate extends Component {
         this.onStore();
     }
     onStore() {
+        let idgrupousuario = document.getElementById('idgrupousuario').value;
         let body = {
             descripcion: this.state.descripcion,
             nota: this.state.nota,
-            idgrupousuario: this.props.params.idgrupousuario,
+            idgrupousuario: idgrupousuario,
         };
         this.setState( { disabled: true, } );
         axios.post( "/api/grupousuario/update", body ) . then ( ( resp ) => {
@@ -116,7 +115,7 @@ class GrupoUsuarioEditPrivate extends Component {
                     showConfirmButton: false,
                     timer: 1500
                 } );
-                this.props.navigate('/grupousuario/index');
+                location.href = '/grupousuario/index';
                 return;
             }
             if ( resp.data.rpta === -5 ) {
@@ -149,7 +148,7 @@ class GrupoUsuarioEditPrivate extends Component {
                         <Button type="primary" danger disabled={this.state.disabled}
                             onClick={ ( evt ) => {
                                 evt.preventDefault();
-                                this.props.navigate( "/grupousuario/index" );
+                                location.href = '/grupousuario/index';
                             } }
                         >
                             Atras
@@ -186,7 +185,7 @@ class GrupoUsuarioEditPrivate extends Component {
                         <Button danger style={ { marginRight: 5, } }
                             onClick={ ( evt ) => {
                                 evt.preventDefault();
-                                this.props.navigate( "/grupousuario/index" );
+                                location.href = '/grupousuario/index';
                             } } disabled={this.state.disabled}
                         >
                             Cancelar
@@ -204,3 +203,8 @@ class GrupoUsuarioEditPrivate extends Component {
 };
 
 export default GrupoUsuarioEdit;
+
+if (document.getElementById('GrupoUsuarioEdit')) {
+    ReactDOM.render(<GrupoUsuarioEdit />, document.getElementById('GrupoUsuarioEdit'));
+}
+

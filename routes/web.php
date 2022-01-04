@@ -96,3 +96,15 @@ Route::get('/usuario/index', [App\Http\Controllers\Seguridad\UsuarioController::
 Route::get('/usuario/create', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pagecreate']);
 Route::get('/usuario/edit/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageedit']);
 Route::get('/usuario/show/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageshow']);
+
+Route::get('/grupousuario/index', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pageindex']);
+Route::get('/grupousuario/create', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pagecreate']);
+Route::get('/grupousuario/edit/{idgrupousuario}', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pageedit']);
+Route::get('/grupousuario/show/{idgrupousuario}', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pageshow']);
+
+Route::get('/formulario/index', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageindex']);
+Route::get('/formulario/asignar', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageasignar']);
+
+Route::get('/formulario/create', [App\Http\Controllers\Seguridad\FormularioController::class, 'pagecreate']);
+Route::get('/formulario/edit/{idformulario}', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageedit']);
+Route::get('/formulario/show/{idformulario}', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageshow']);

@@ -435,6 +435,21 @@ return [
                     'url'  => 'usuario/index',
                     'icon_color' => 'cyan',
                 ],
+                [
+                    'text' => 'Grupo Usuario',
+                    'url'  => 'grupousuario/index',
+                    'icon_color' => 'cyan',
+                ],
+                [
+                    'text' => 'Formulario',
+                    'url'  => 'formulario/index',
+                    'icon_color' => 'cyan',
+                ],
+                [
+                    'text' => 'Asignar Formulario',
+                    'url'  => 'formulario/asignar',
+                    'icon_color' => 'cyan',
+                ],
             ],
         ],
        /* ['header' => 'account_settings'],

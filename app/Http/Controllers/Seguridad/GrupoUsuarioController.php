@@ -530,4 +530,18 @@ class GrupoUsuarioController extends Controller
         }
     }
 
+
+    public function pageindex() {
+        return view( 'seguridad.grupousuario.index' );
+    }
+    public function pagecreate() {
+        return view( 'seguridad.grupousuario.create' );
+    }
+    public function pageedit($idgrupousuario) {
+        return view( 'seguridad.grupousuario.edit', compact('idgrupousuario') );
+    }
+    public function pageshow($idgrupousuario) {
+        return view( 'seguridad.grupousuario.show', compact('idgrupousuario') );
+    }
+
 }

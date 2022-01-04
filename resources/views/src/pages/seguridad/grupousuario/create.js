@@ -1,19 +1,18 @@
 
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 import { Button, Card, Col, Row } from 'antd';
 
 import TextField from '@mui/material/TextField';
 import Swal from 'sweetalert2';
+import 'antd/dist/antd.css';
 
 function GrupoUsuarioCreate() {
-    const navigate = useNavigate();
     return (
         <>
             <GrupoUsuarioCreatePrivate 
-                navigate={navigate}
             />
         </>
     );
@@ -94,7 +93,7 @@ class GrupoUsuarioCreatePrivate extends Component {
                     showConfirmButton: false,
                     timer: 1500
                 } );
-                this.props.navigate('/grupousuario/index');
+                location.href = '/grupousuario/index';
                 return;
             }
             if ( resp.data.rpta === -5 ) {
@@ -127,7 +126,7 @@ class GrupoUsuarioCreatePrivate extends Component {
                         <Button type="primary" danger disabled={this.state.disabled}
                             onClick={ ( evt ) => {
                                 evt.preventDefault();
-                                this.props.navigate( "/grupousuario/index" );
+                                location.href = '/grupousuario/index';
                             } }
                         >
                             Atras
@@ -164,7 +163,7 @@ class GrupoUsuarioCreatePrivate extends Component {
                         <Button danger style={ { marginRight: 5, } }
                             onClick={ ( evt ) => {
                                 evt.preventDefault();
-                                this.props.navigate( "/grupousuario/index" );
+                                location.href = '/grupousuario/index';
                             } } disabled={this.state.disabled}
                         >
                             Cancelar
@@ -182,3 +181,7 @@ class GrupoUsuarioCreatePrivate extends Component {
 };
 
 export default GrupoUsuarioCreate;
+
+if (document.getElementById('GrupoUsuarioCreate')) {
+    ReactDOM.render(<GrupoUsuarioCreate />, document.getElementById('GrupoUsuarioCreate'));
+}

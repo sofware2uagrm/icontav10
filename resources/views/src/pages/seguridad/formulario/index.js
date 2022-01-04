@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 import { Button, Card, Col, Dropdown, Menu, Row, Tooltip, Tree } from 'antd';
@@ -8,6 +9,7 @@ import { DeleteOutlined, EditOutlined, EyeOutlined, MoreOutlined, PlusOutlined }
 import TextField from '@mui/material/TextField';
 import Swal from 'sweetalert2';
 import ComponentModal from '../../../components/modal';
+import 'antd/dist/antd.css';
 
 function FormularioIndex() {
     return (
@@ -28,6 +30,7 @@ class FormularioIndexPrivate extends Component {
             visible_delete: false,
             loading: false,
             tree_formulario: [],
+            array_formulario: [],
             formulario: null,
 
             idformulario: null,
@@ -119,6 +122,7 @@ class FormularioIndexPrivate extends Component {
 
     cargarTree( arrayFormulario ) {
         let array = [];
+        this.state.array_formulario = [];
         for (let index = 0; index < arrayFormulario.length; index++) {
             const element = arrayFormulario[index];
             if ( element.fkidformulariopadre === null ) {
@@ -142,11 +146,13 @@ class FormularioIndexPrivate extends Component {
                 };
                 array.push(detalle);
             }
+            this.state.array_formulario.push(element.idformulario);
         }
         this.treeData( array, arrayFormulario );
         console.log(array)
         this.setState( {
             tree_formulario: array,
+            array_formulario: this.state.array_formulario,
         } );
     };
     treeData( array, arrayFormulario ) {
@@ -494,7 +500,12 @@ class FormularioIndexPrivate extends Component {
                             <Tree
                                 showLine
                                 // onSelect={onSelect}
-                                // onExpand={onExpand}
+                                onExpand={ ( expandedKeys ) => {
+                                    this.setState( {
+                                        array_formulario: expandedKeys,
+                                    } );
+                                } }
+                                expandedKeys={this.state.array_formulario}
                                 treeData={this.state.tree_formulario}
                                 style={{ minWidth: '100%', width: '100%', maxWidth: '100%', }}
                             />
@@ -507,3 +518,7 @@ class FormularioIndexPrivate extends Component {
 };
 
 export default FormularioIndex;
+
+if (document.getElementById('FormularioIndex')) {
+    ReactDOM.render(<FormularioIndex />, document.getElementById('FormularioIndex'));
+}

@@ -1,21 +1,18 @@
 
 import React, { Component } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 import { Button, Card, Col, Row } from 'antd';
 
 import TextField from '@mui/material/TextField';
 import Swal from 'sweetalert2';
+import 'antd/dist/antd.css';
 
 function GrupoUsuarioShow() {
-    const navigate = useNavigate();
-    const params = useParams();
     return (
         <>
             <GrupoUsuarioShowPrivate 
-                navigate={navigate}
-                params={params}
             />
         </>
     );
@@ -41,7 +38,8 @@ class GrupoUsuarioShowPrivate extends Component {
         this.get_data();
     };
     get_data( ) {
-        axios.get( "/api/grupousuario/show/" + this.props.params.idgrupousuario ) . then ( ( resp ) => {
+        let idgrupousuario = document.getElementById('idgrupousuario').value;
+        axios.get( "/api/grupousuario/show/" + idgrupousuario ) . then ( ( resp ) => {
             console.log(resp)
             if ( resp.data.rpta === 1 ) {
                 this.setState( {
@@ -78,7 +76,7 @@ class GrupoUsuarioShowPrivate extends Component {
                         <Button type="primary" danger
                             onClick={ ( evt ) => {
                                 evt.preventDefault();
-                                this.props.navigate( "/grupousuario/index" );
+                                location.href = '/grupousuario/index';
                             } }
                         >
                             Atras
@@ -118,3 +116,7 @@ class GrupoUsuarioShowPrivate extends Component {
 };
 
 export default GrupoUsuarioShow;
+
+if (document.getElementById('GrupoUsuarioShow')) {
+    ReactDOM.render(<GrupoUsuarioShow />, document.getElementById('GrupoUsuarioShow'));
+}

@@ -327,4 +327,17 @@ class FormularioController extends Controller
             ] );
         }
     }
+
+    public function pageindex() {
+        return view( 'seguridad.formulario.index' );
+    }
+    public function pageasignar() {
+        return view( 'seguridad.formulario.asignar' );
+    }
+    public function pageedit($idformulario) {
+        return view( 'seguridad.formulario.edit', compact('idformulario') );
+    }
+    public function pageshow($idformulario) {
+        return view( 'seguridad.formulario.show', compact('idformulario') );
+    }
 }

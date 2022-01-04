@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 import { Button, Card, Checkbox, Col, Row, Table, Tooltip, Transfer, Tree } from 'antd';
@@ -9,13 +9,12 @@ import { MenuItem, TextField } from '@mui/material';
 import Swal from 'sweetalert2';
 
 import ComponentModal from '../../components/modal';
+import 'antd/dist/antd.css';
 
 function AsignarFormulario() {
-    const navigate = useNavigate();
     return (
         <>
             <AsignarFormularioPrivate 
-                navigate={navigate}
             />
         </>
     );
@@ -405,3 +404,7 @@ class AsignarFormularioPrivate extends Component {
 };
 
 export default AsignarFormulario;
+
+if (document.getElementById('AsignarFormulario')) {
+    ReactDOM.render(<AsignarFormulario />, document.getElementById('AsignarFormulario'));
+}
