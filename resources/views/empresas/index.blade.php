@@ -53,13 +53,6 @@
                <td>{{ $empresa->sucursal}}</td>
                <td>{{ $empresa->estado}}</td>
                  
-            
- 
- 
- 
- 
- 
- 
                  <td>
                      <a class ="btn btn-primary btn-sm" href="{{ route('empresas.edit',$empresa) }}">Editar</a>   
  
