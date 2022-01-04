@@ -13,7 +13,8 @@ class CuentaPlanTipos extends Migration
      */
     public function up()
     {
-        Schema::create('cuenta_plan_tipo', function (Blueprint $table) {
+        //ya tabla creada con ese nombre modificar porq esta siendo utilizada
+        Schema::create('cuenta_plan_tipoAUX', function (Blueprint $table) {
             $table->increments('idCuentaPlanTipo');
             $table->string('descripcion');
             $table->integer('estado')->unsigned()->nullable();
