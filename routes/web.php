@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 // leonel
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\GestionController;
@@ -11,6 +12,13 @@ use App\Http\Controllers\FormatoDocController;
 use App\Http\Controllers\FirmaReporteController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\TiponivelController;
+// ARMIN
+use App\Http\Controllers\ComprobanteController;
+use App\Http\Controllers\CuentaPlanController;
+use App\Http\Controllers\CuentaPlanTipoController;
+use App\Models\CuentaPlan;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +73,21 @@ Route::post('tipoNivel/update/{tiponivel}',[ TiponivelController::class , 'updat
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// de armin
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/cuenta-plan',[CuentaPlanController::class,'mostrar'])->name('cuenta-plan.index');
+    Route::get('/cuenta-tipo-plan',[CuentaPlanTipoController::class,'mostrar'])->name('cuenta-plan-tipo.index');
+
+    Route::get('/comprobante',[ComprobanteController::class,'mostrar'])->name('comprobante.index');
+
+});
+
+Route::get('/example',function (){
+    return cuantas_plan_padre();
+});
 
 
 //ericka lopez santos
