@@ -19,6 +19,7 @@ class CreateGestionsTable extends Migration
             $table->date('fecha_ini');
             $table->date('fecha_fin');
             $table->timestamps();
+           
         });
     }
 
