@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+
+
+    protected $table = 'users';
+    protected $primaryKey = 'idusers';
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +23,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nombre', 'apellido', 'email',
+        'login', 'password',
+        'imagen',
+        'ip', 'intentos', 'timewait',
+        'lastlogin', 'lastlogout',
+        'remembertoken', 'apitoken',
+        'x_idusuario', 'x_fecha', 'x_hora', 'isdelete', 'estado',
     ];
 
     /**
@@ -41,14 +50,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function adminlte_image(){
-        return 'https://picsum.photos/300/300';
-    }
-    public function adminlte_desc(){
-        return "administrador";
-    }
-    public function adminlte_profile_url(){
-        return 'profile/username';
-    }
 }

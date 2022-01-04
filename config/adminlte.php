@@ -425,6 +425,18 @@ return [
                 ],
             ],
         ],
+        [
+            'text'        => 'Seguridad',
+            'url'         => 'seguridad/',
+            'icon'        => 'far fa-clone',
+            'submenu' => [
+                [
+                    'text' => 'Usuario',
+                    'url'  => 'usuario/index',
+                    'icon_color' => 'cyan',
+                ],
+            ],
+        ],
        /* ['header' => 'account_settings'],
         [
             'text' => 'profile',

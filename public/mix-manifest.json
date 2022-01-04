@@ -1,0 +1,8 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/usuario_index.js": "/js/usuario_index.js",
+    "/js/usuario_create.js": "/js/usuario_create.js",
+    "/js/usuario_edit.js": "/js/usuario_edit.js",
+    "/js/usuario_show.js": "/js/usuario_show.js",
+    "/css/app.css": "/css/app.css"
+}

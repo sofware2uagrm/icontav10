@@ -88,3 +88,11 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/example',function (){
     return cuantas_plan_padre();
 });
+
+
+//ericka lopez santos
+
+Route::get('/usuario/index', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageindex']);
+Route::get('/usuario/create', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pagecreate']);
+Route::get('/usuario/edit/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageedit']);
+Route::get('/usuario/show/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageshow']);
