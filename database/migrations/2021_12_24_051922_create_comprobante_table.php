@@ -35,11 +35,11 @@ class CreateComprobanteTable extends Migration
             $table->integer('idUser')->unsigned()->nullable();
 
            
-            $table->foreign('idMoneda')->on('monedas')->references('idMoneda')->onDelete('cascade');
+            $table->foreign('idMoneda')->on('monedasAUX')->references('idMoneda')->onDelete('cascade');
             
             $table->foreign('idComprobanteTipo')->on('comprobante_tipo')->references('idComprobanteTipo')->onDelete('cascade');
            
-            $table->foreign('idUser')->on('users')->references('id')->onDelete('cascade');
+           // $table->foreign('idUser')->on('users')->references('id')->onDelete('cascade');
         });
     }
 
