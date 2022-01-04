@@ -39,7 +39,7 @@
              <tr>
                  <td> {{ $empresa->id}}</td>
                  <td> 
-                 <img src="{{env('APP_URL')}}{{$empresa->logo}}" width="100" alt="">    
+                 <img src="{{Storage::url($empresa->logo)}}" width="100" alt="">    
                  </td>
  
                  <td> {{ $empresa->razonsocial}}</td>
