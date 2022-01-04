@@ -36,3 +36,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/usuario/index', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageindex']);
+Route::get('/usuario/create', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pagecreate']);
+Route::get('/usuario/edit/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageedit']);
+Route::get('/usuario/show/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageshow']);

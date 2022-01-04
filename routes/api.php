@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/usuario/index', [App\Http\Controllers\Seguridad\UsuarioController::class, 'index']);
+Route::get('/usuario/create', [App\Http\Controllers\Seguridad\UsuarioController::class, 'create']);
+Route::post('/usuario/store', [App\Http\Controllers\Seguridad\UsuarioController::class, 'store']);
+Route::get('/usuario/edit/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'edit']);
+Route::post('/usuario/update', [App\Http\Controllers\Seguridad\UsuarioController::class, 'update']);
+Route::get('/usuario/show/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'show']);
+Route::post('/usuario/delete/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'destroy']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
