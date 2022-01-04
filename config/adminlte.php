@@ -1,5 +1,9 @@
 <?php
-{{$anio= date("Y");}}
+{{$anio= date("Y");
+$url_leonel_empresas=Config('app.url').'/empresas';
+$url_leonel_gestions=Config('app.url').'/gestions';
+$url_lucas_moneda=Config('app.url').'moneda';
+}}
 return [
 
     /*
@@ -369,12 +373,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Fecha De Inicio De Gestion Contable',
-                    'url'  => '#',
+                    'url'  => "$url_leonel_gestions",
                     'icon_color' => 'cyan',
                 ],
                 [
                     'text' => 'Datos Generales De La Empresa',
-                    'url'  => '#',
+                    'url'  => "$url_leonel_empresas",
                     'icon_color' => 'cyan',
                 ],
                 [
@@ -396,7 +400,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Configuracion de Parametros',
-                    'url'  => '#',
+                    'url'  => "$url_lucas_moneda",
                      'icon' => 'fas fa-tools',
                 ],
                 [

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ericka lopez santos
+
 Route::get('/usuario/index', [App\Http\Controllers\Seguridad\UsuarioController::class, 'index']);
 Route::get('/usuario/create', [App\Http\Controllers\Seguridad\UsuarioController::class, 'create']);
 Route::post('/usuario/store', [App\Http\Controllers\Seguridad\UsuarioController::class, 'store']);

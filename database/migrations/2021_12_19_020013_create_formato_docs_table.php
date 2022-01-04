@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGestionsTable extends Migration
+class CreateFormatoDocsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateGestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gestions', function (Blueprint $table) {
-            $table->id(); 
-            $table->string('descripcion');
-            $table->date('fecha_ini');
-            $table->date('fecha_fin');
+        Schema::create('formato_docs', function (Blueprint $table) {
+            $table->id();
+            $table->integer('habilitar_ref');
+            $table->integer('imprimir_nombre_comprobante');
+            $table->integer('mostrar_fecha_hora');
             $table->timestamps();
-           
         });
     }
 
@@ -30,6 +29,6 @@ class CreateGestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gestions');
+        Schema::dropIfExists('formato_docs');
     }
 }

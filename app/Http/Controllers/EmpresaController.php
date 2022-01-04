@@ -42,13 +42,13 @@ class EmpresaController extends Controller
     {       $empresa= request()->except('_token');
          
         if($request->hasFile('logo')){
-                $empresa['logo']=$request->file('logo')->store('uploads','public');
+              return  $empresa['logo']=$request->file('logo')->store('uploads','public');
         }
 
-         return Empresa::insert($empresa);
+          Empresa::insert($empresa);
 
 //        return response()->json($datosEmpleado);
-      //  return redirect()->route('empresas.index')->with('mensaje','Empleado agregado con éxito');  
+        return redirect()->route('empresas.index')->with('mensaje','Empleado agregado con éxito');  
    
     
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGestionsTable extends Migration
+class CreateAsientoLCVSTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateGestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gestions', function (Blueprint $table) {
-            $table->id(); 
-            $table->string('descripcion');
-            $table->date('fecha_ini');
-            $table->date('fecha_fin');
+        Schema::create('asiento__l_c_v_s', function (Blueprint $table) {
+            $table->id();
+            $table->integer('generar_asientos');
             $table->timestamps();
-           
         });
     }
 
@@ -30,6 +27,6 @@ class CreateGestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gestions');
+        Schema::dropIfExists('asiento__l_c_v_s');
     }
 }
