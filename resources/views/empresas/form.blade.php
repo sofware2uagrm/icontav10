@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col">   
     <label for="razonsocial">razonsocial</label>
-    <input  placeholder="imgrese" type="text" name="razonsocial"  value="{{isset($empresa->razonsocial)?$empresa->razonsocial:""}}" id="razonsocial">
+    <input  placeholder="imgrese" type="text" name="Razonsocial"  value="{{isset($empresa->razonsocial)?$empresa->razonsocial:""}}" id="razonsocial">
     <br>
     <label for="nit">nit</label> 
     <input  placeholder="imgrese"type="text" name="nit" value="{{isset($empresa->nit)?$empresa->nit:""}}" id="nit">

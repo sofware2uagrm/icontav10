@@ -42,7 +42,7 @@ class EmpresaController extends Controller
     {       $empresa= request()->except('_token');
          
         if($request->hasFile('logo')){
-              return  $empresa['logo']=$request->file('logo')->store('uploads','public');
+                $empresa['logo']=$request->file('logo')->store('uploads','public');
         }
 
           Empresa::insert($empresa);
