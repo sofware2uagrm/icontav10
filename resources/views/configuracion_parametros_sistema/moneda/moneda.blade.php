@@ -10,53 +10,45 @@
 
 @section('content')
 
-<br>
   <div class="container-fluid">
-    <h1 class="text-center" >Control De Parametros Del Sistema</h1>   
-    <br>
-        <div class="d-grid gap-1 d-md-inline-block">
-            <a class="btn btn-dark" href="{{asset('moneda')}}"> <i class="bi bi-coin"></i> Moneda</a>
-            <a class="btn btn-dark" href="{{asset('formatoDocumento')}}"><i class="bi bi-file-earmark-bar-graph"></i> Formato De Documento</a>
-            <a class="btn btn-dark" href="{{asset('firmaReporte')}}"><i class="bi bi-brush"></i> Firma De Reportes</a>
-            <a class="btn btn-dark" href="{{asset('proyecto')}}"><i class="bi bi-filter-square"></i> Proyectos</a>
-            <a class="btn btn-dark" href="{{asset('asientoLCV')}}"><i class="bi bi-filter-circle"></i> Asientos LCV</a>
-            <a class="btn btn-dark" href="{{asset('tipoNivel')}}"> <i class="bi bi-sort-up"></i> Nivel</a>   
+        <h1 class="text-center" >Control De Parametros Del Sistema</h1>   
+        <br>
+            <div class="mb-4">
+                <a class="btn btn-dark" href="{{asset('moneda')}}"> <i class="bi bi-coin"></i> Moneda</a>
+                <a class="btn btn-dark" href="{{asset('formatoDocumento')}}"><i class="bi bi-file-earmark-bar-graph"></i> Formato De Documento</a>
+                <a class="btn btn-dark" href="{{asset('firmaReporte')}}"><i class="bi bi-brush"></i> Firma De Reportes</a>
+                <a class="btn btn-dark" href="{{asset('proyecto')}}"><i class="bi bi-filter-square"></i> Proyectos</a>
+                <a class="btn btn-dark" href="{{asset('asientoLCV')}}"><i class="bi bi-filter-circle"></i> Asientos LCV</a>
+                <a class="btn btn-dark" href="{{asset('tipoNivel')}}"> <i class="bi bi-sort-up"></i> Nivel</a>   
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    @foreach ($datos as $dato)
+                        <form  method="POST" action="{{asset('moneda/update')}}/{{$dato['id']}}">
+                            @csrf 
+                            <input id="id_moneda" type="hidden" value="{{$dato['id']}}">
+                            <label >Moneda </label> 
+                            <select  id="tipo_moneda"  name="tipo_moneda" required>
+                                <option @if ($dato->tipo_moneda == 0) {{ 'selected' }} @endif value="0">BOLIVIANOS</option>
+                                <option @if ($dato->tipo_moneda == 1) {{ 'selected' }} @endif value="1">DOLARES</option>
+                                <option @if ($dato->tipo_moneda == 2) {{ 'selected' }} @endif value="2">BOLIVIANOS/DOLARES</option>
+                            </select>   
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        </form>
+                    @endforeach
+            
+                    <form id="formoneda" >
+                        <button type="submit" class=" btn btn-outline-primary">guardar</button>
+                        <a href="" class=" btn btn-outline-success">cancelar</a>
+                    </form>
+                </div>
+            </div>
         </div>
-    
-    </div>      
-
-    <br>
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-            @foreach ($datos as $dato)
-            <form  method="POST" action="{{asset('moneda/update')}}/{{$dato['id']}}">
-                @csrf 
-                <input id="id_moneda" type="hidden" value="{{$dato['id']}}">
-                <label >Moneda </label> 
-                <select id="tipo_moneda"  name="tipo_moneda" required>
-                    <option @if ($dato->tipo_moneda == 0) {{ 'selected' }} @endif value="0">BOLIVIANOS</option>
-                    <option @if ($dato->tipo_moneda == 1) {{ 'selected' }} @endif value="1">DOLARES</option>
-                    <option @if ($dato->tipo_moneda == 2) {{ 'selected' }} @endif value="2">BOLIVIANOS/DOLARES</option>
-                </select>   
-            <br>
-            <br>
-            <br>
-            <br>
-            </form>
-            @endforeach
-            <br>
-            <form id="formoneda" >
-                <button type="submit" class=" btn btn-outline-primary">guardar</button>
-                <a href="" class=" btn btn-outline-success">cancelar</a>
-            </form>
-       </div>
     </div>
-</div>
-</div>
 
-
-<!-- end moneda java scrip mas ajax-->
 @stop
 
 <!--//Contenido de nuestra pagina -->
@@ -64,7 +56,6 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
-
 @stop
 
 <!--//agregamos css -->

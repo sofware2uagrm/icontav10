@@ -10,11 +10,11 @@
 <!--//Agregamos un header a nuestra pagina -->
 
 @section('content')
-<br>
+
   <div class="container-fluid">
-    <h1 class="text-center" >Control De Parametros Del Sistema</h1>   
-    <br>
-        <div class="d-grid gap-1 d-md-inline-block">
+        <h1 class="text-center" >Control De Parametros Del Sistema</h1>   
+        <br>
+        <div class="mb-4">
             <a class="btn btn-dark" href="{{asset('moneda')}}"> <i class="bi bi-coin"></i> Moneda</a>
             <a class="btn btn-dark" href="{{asset('formatoDocumento')}}"><i class="bi bi-file-earmark-bar-graph"></i> Formato De Documento</a>
             <a class="btn btn-dark" href="{{asset('firmaReporte')}}"><i class="bi bi-brush"></i> Firma De Reportes</a>
@@ -23,44 +23,34 @@
             <a class="btn btn-dark" href="{{asset('tipoNivel')}}"> <i class="bi bi-sort-up"></i> Nivel</a>   
         </div>
    
-    </div>      
-
-    <br>
-    <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-       
-            @foreach ($datos as $dato)
-                    <form method="POST" action="{{asset('asientoLCV/update')}}/{{$dato['id']}}">
-                        @csrf 
-                        <input id="id_asiento" type="hidden" value="{{$dato['id']}}">
-                        <br>
-                         <label class="text-primary " >Modalidad de Asientos Automaticos LCV</label> 
-                         <br>
-                        <div class="mb-3">
-                        <label >Generar Asientos Contables Automaticos para LCV </label> 
-                        <select id="generar_asientos"  name="generar_asientos" required>
-                            <option @if ($dato->generar_asientos == 0) {{ 'selected' }} @endif value="0">NINGUNO</option>
-                            <option @if ($dato->generar_asientos == 1) {{ 'selected' }} @endif value="1">ITERACTIVO</option>
-                            <option @if ($dato->generar_asientos == 2) {{ 'selected' }} @endif value="2">AUTOMATICO</option>
-                        </select> 
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        
-                    </form>
-             @endforeach
-            <form id="forasiento">
-                <button type="submit" class=" btn btn-outline-primary">guardar</button>
-                <a href="" class=" btn btn-outline-success">cancelar</a>
-            </form>
-      </div>
+                @foreach ($datos as $dato)
+                        <form method="POST" action="{{asset('asientoLCV/update')}}/{{$dato['id']}}">
+                            @csrf 
+                            <input id="id_asiento" type="hidden" value="{{$dato['id']}}">
+                            <label class="text-primary " >Modalidad de Asientos Automaticos LCV</label> 
+                            <br>
+                            <div class="mb-3">
+                                <label >Generar Asientos Contables Automaticos para LCV </label> 
+                                <select id="generar_asientos"  name="generar_asientos" required>
+                                    <option @if ($dato->generar_asientos == 0) {{ 'selected' }} @endif value="0">NINGUNO</option>
+                                    <option @if ($dato->generar_asientos == 1) {{ 'selected' }} @endif value="1">ITERACTIVO</option>
+                                    <option @if ($dato->generar_asientos == 2) {{ 'selected' }} @endif value="2">AUTOMATICO</option>
+                                </select> 
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                        </form>
+                @endforeach
+                <form id="forasiento">
+                    <button type="submit" class=" btn btn-outline-primary">guardar</button>
+                    <a href="#" class=" btn btn-outline-success">cancelar</a>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-
 
 @stop
 

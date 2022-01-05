@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 // leonel
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\GestionController;
@@ -29,13 +30,14 @@ Route::get('/', function () {
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
 
 // de leonel
 Route::resource('empresas', EmpresaController::class)->names('empresas');
 Route::resource('gestions', GestionController::class)->names('gestions');
 Route::get('datosdelaempresa',[ActualController::class,'empresaactual'])->name('datosdelaempresa');
 Route::get('gestiondelaempresa',[ActualController::class,'gestionactual'])->name('gestiondelaempresa');
-Auth::routes();
+
 //
 
 //de lucas 
@@ -63,4 +65,4 @@ Route::resource('tipoNivel', TiponivelController::class);
 Route::get('tipoNivel',[ TiponivelController::class , 'index']);
 Route::post('tipoNivel/update/{tiponivel}',[ TiponivelController::class , 'update']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
