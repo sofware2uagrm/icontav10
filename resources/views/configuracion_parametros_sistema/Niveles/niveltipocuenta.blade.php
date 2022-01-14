@@ -10,7 +10,7 @@
 <!--//Agregamos un header a nuestra pagina -->
 
 @section('content')
-  <div  class="container-fluid">
+  <div class="container-fluid">
         <h1 class="text-center" >Control De Parametros Del Sistema</h1>   
         <br>
         <div class="mb-4">
@@ -27,7 +27,6 @@
                 <div class="mb-4">
                     <label class="text-primary" >Nivel</label> 
                 </div>
-
                 @php($sw=1)
                 @php($codigo="")
                 @php($cad="")
@@ -58,12 +57,23 @@
                         <input id="form{{$contador}}id_nivel" type="hidden" value="{{$dato['id']}}">
                         <label >nivel {{ $dato->nivel }} </label> 
                         <select id="form{{$dato['id']}}Tipo_nivel"  name="form{{$dato['id']}}Tipo_nivel" required>
-                            <option @if ($dato->tipoNivel == 1) {{ 'selected' }} @endif value="1">1</option>
+                            @php($cantidad=1)
+                            @php($n=$dato->nivel)
+                            @if ($n==1)
+                                @php($n++)
+                            @endif
+                            @while ($cantidad <= $n)
+                               
+                               <option @if ($dato->tipoNivel == $cantidad) {{ 'selected' }} @endif value="{{$cantidad}}">{{$cantidad}}</option>
+                           
+                               @php($cantidad++)
+                            @endwhile
+                            {{--<option @if ($dato->tipoNivel == 1) {{ 'selected' }} @endif value="1">1</option>
                             <option @if ($dato->tipoNivel == 2) {{ 'selected' }} @endif value="2">2</option>
                             <option @if ($dato->tipoNivel == 3) {{ 'selected' }} @endif value="3">3</option>
                             <option @if ($dato->tipoNivel == 4) {{ 'selected' }} @endif value="4">4</option>
                             <option @if ($dato->tipoNivel == 5) {{ 'selected' }} @endif value="5">5</option>
-                            <option @if ($dato->tipoNivel == 6) {{ 'selected' }} @endif value="6">6</option>
+                            <option @if ($dato->tipoNivel == 6) {{ 'selected' }} @endif value="6">6</option>--}}
                         </select>   
                     </form>
                     @php($contador++)
@@ -92,7 +102,6 @@
 @section('js')
 <script> console.log('Hi!'); </script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 
 <!-- niveltipocuenta java scrip mas ajax-->
@@ -134,8 +143,8 @@
             url: link2,
              
             success:function(resp){
-               // $("#contenido").html(resp); 
-                window.location.href = window.location.href;
+               //$("#contenido").html(resp); 
+               window.location.href = window.location.href;
             }
         })
     });

@@ -3,6 +3,7 @@
 $url_leonel_empresas=Config('app.url').'/empresas';
 $url_leonel_gestions=Config('app.url').'/gestions';
 $url_lucas_moneda=Config('app.url').'moneda';
+$url_nicolas_eliminacion=Config('app.url').'eliminacion';
 }}
 return [
 
@@ -409,8 +410,8 @@ return [
                     'icon_color' => 'cyan',
                 ],
                 [
-                    'text' => 'Eliminacion de Usuarios',
-                    'url'  => '#',
+                    'text' => 'Eliminacion de Registro',
+                    'url'  => "$url_nicolas_eliminacion",
                     'icon_color' => 'cyan',
                 ],
                 [

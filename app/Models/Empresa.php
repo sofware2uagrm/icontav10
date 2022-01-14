@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Empresa extends Model
 {
     use HasFactory;
+    // agregago por lucas pa ayudar a nicolas
+    public function limpiarEMPRESA(){
+        //CONSULTA para eliminar todo:
+        $this->truncate();
+    }
 }
