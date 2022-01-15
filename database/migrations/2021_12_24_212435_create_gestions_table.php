@@ -15,11 +15,13 @@ class CreateGestionsTable extends Migration
     {
         Schema::create('gestions', function (Blueprint $table) {
             $table->id(); 
-            $table->string('descripcion');
+             $table->string('descripcion');
             $table->date('fecha_ini');
-            $table->date('fecha_fin');
+            $table->date('fecha_fin');  
+          //  $table->unsignedBigInteger('tipo_id');
+        //    $table->foreign('tipo_id')->references('id')->on('tipo_gestions');
+           // $table->enum('estado',['activo','inactivo']); 
             $table->timestamps();
-           
         });
     }
 

@@ -113,13 +113,13 @@ class EmpresaController extends Controller
     public function destroy(Empresa $empresa)
     {
         $empresas=Empresa::findOrFail($empresa->id);
-        if(Storage::delete('public/'.$empresas->foto)){
+        $empresa->delete();
+        if(Storage::delete(($empresa->logo))){
 
-            Empresa::destroy($empresa->id);
-
+            
         }
 
-        return redirect('empresas.index')->with('mensaje','Empleado borrado');
+        return redirect()->route('empresas.index')->with('mensaje','Empleado borrado');
  
     }
 }

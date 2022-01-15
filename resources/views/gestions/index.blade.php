@@ -1,25 +1,21 @@
 
 
-
 @extends('adminlte::page')
-<!--//implementa la vista de adminlte -->
-@section('title' )
-<!--//agregamos un titulo  -->
 
-@section('content_header')
-    <h1>Bienbenidos Compañeros De Software 2</h1> 
-@stop
-<!--//Agregamos un header a nuestra pagina -->
+@section('title', 'Dashboard')
+
 
 @section('content')
+
+
 <div><a class="btn btn-secondary" href="{{url('/gestions/create')}}">NUEVO  REGISTRO</a> </div>
 <table id="gestiontable" class="table table-light">
         <thead class="thead-light">
             <tr>
                 <th>#</th>
-                <th>descripcion</th>
-                <th>fechaini</th>
-                <th>fechafin</th>
+                <th>DESCRIPCION</th>
+                <th>FECHA DE INICIO</th>
+                <th>FECHA DE FINAL</th>
                 <th></th>
                 <th></th>
             </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gestion;
+use App\Models\TipoGestion;
 use Illuminate\Http\Request;
 
 class GestionController extends Controller
@@ -24,8 +25,8 @@ class GestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-       return view('gestions.create');
+    {  
+        return view('gestions.create');
     }
 
     /**
@@ -35,11 +36,25 @@ class GestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
         $gestion= request()->except('_token');
-       
-        Gestion::insert($gestion);
+       if($request->fecha_ini==null)
+       {
+        Gestion::create([
+        'descripcion'=> "$request->descripcion",
+        'fecha_ini'=>$request->fecha,
+        'fecha_fin'=>$request->fecha2
+        ]);
+    }
+    else{
 
+        Gestion::create([
+            'descripcion'=> "$request->descripcion",
+            'fecha_ini'=>$request->fecha_ini,
+            'fecha_fin'=>$request->fecha_fin,
+            ]);
+
+    }
         return redirect()->route('gestions.index');
 
 
@@ -93,7 +108,7 @@ class GestionController extends Controller
     public function destroy(Gestion $gestion)
     {
         Gestion::destroy($gestion->id);
-        return redirect('gestions.index')->with('mensaje','Empleado borrado');
- 
     }
+
+    
 }

@@ -31,11 +31,11 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // de leonel
+
 Route::resource('empresas', EmpresaController::class)->names('empresas');
 Route::resource('gestions', GestionController::class)->names('gestions');
 Route::get('datosdelaempresa',[ActualController::class,'empresaactual'])->name('datosdelaempresa');
-Route::get('gestiondelaempresa',[ActualController::class,'gestionactual'])->name('gestiondelaempresa');
-Auth::routes();
+Route::get('gestiondelaempresa',[ActualController::class,'gestionactual'])->name('gestiondelaempresa');Auth::routes();
 //
 
 //de lucas 
