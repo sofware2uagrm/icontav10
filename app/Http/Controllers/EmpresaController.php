@@ -114,10 +114,10 @@ class EmpresaController extends Controller
     {
         $empresas=Empresa::findOrFail($empresa->id);
         $empresa->delete();
-        if(Storage::delete(($empresa->logo))){
+       // if(Storage::delete(($empresa->logo))){
 
             
-        }
+        //}
 
         return redirect()->route('empresas.index')->with('mensaje','Empleado borrado');
  
