@@ -19,6 +19,15 @@ class UserSeeder extends Seeder
            'name' => 'admin',
            'email' => 'admin@gmail.com',
            'password' => Hash::make('12345678'),
-       ]); 
+           
+       ])->assignRole('AdministradorICONTAV'); 
+
+       
+       user::create([
+        'name' => 'invitado',
+        'email' => 'invitado@gmail.com',
+        'password' => Hash::make('12345678'),
+        
+    ])->assignRole('INVITADO'); 
     }
 }

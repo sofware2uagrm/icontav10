@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -43,7 +45,7 @@ class User extends Authenticatable
     ];
 
     public function adminlte_image(){
-        return 'https://picsum.photos/300/300';
+        return 'https://previews.123rf.com/images/redlinevector/redlinevector2006/redlinevector200600091/148145388-icono-simple-de-multitud-clientes-clientes-personal-concepto-de-fiesta-se-puede-usar-para-temas-como.jpg?fj=1';
     }
     public function adminlte_desc(){
         return "administrador";
