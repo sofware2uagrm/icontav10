@@ -1,57 +1,23 @@
-@extends('adminlte::page')
-<!--//implementa la vista de adminlte -->
-@section('title' )
-<!--//agregamos un titulo  -->
-
-@section('content_header')
-    <h1>Bienbenidos Compañeros De Software 2</h1> 
-@stop
-<!--//Agregamos un header a nuestra pagina -->
+@extends('layouts.app')
 
 @section('content')
-    <p>Este sera la plantilla en la que trabajeros y uniremos nuestros trabajos realizados</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-    <div class="container-fluid">
-        <h2 class="text-center ">Usuarios Registrados</h2>
-        
-        <div class="card">
-            <div class="card-header">
                 <div class="card-body">
-                    <table id="tabla_empresa"  class=" table table-bordered table-sm">
-                        <thead>
-                            <th> id </th>
-                            <th> Usuario </th>
-                            <th> correo </th>
-                            
-                        </thead>
-                        <tbody>   
-                            @foreach ($datos as $dato)     
-                        <tr>
-                            <td>{{$dato['id']}}</td>
-                            <td>{{$dato['name']}}</td>
-                            <td>{{$dato['email']}}</td> 
-                        </tr>
-                        @endforeach
-                   
-                        </tbody>
-                    </table>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
                 </div>
             </div>
-          </div>
         </div>
     </div>
-@stop
-
-<!--//Contenido de nuestra pagina -->
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-<!--//agregamos css -->
-
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop
-
-<!--//agregamos Java Script-->
+</div>
+@endsection

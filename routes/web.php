@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 // leonel
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\GestionController;
@@ -11,6 +12,13 @@ use App\Http\Controllers\FormatoDocController;
 use App\Http\Controllers\FirmaReporteController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\TiponivelController;
+// ARMIN
+use App\Http\Controllers\ComprobanteController;
+use App\Http\Controllers\CuentaPlanController;
+use App\Http\Controllers\CuentaPlanTipoController;
+use App\Models\CuentaPlan;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +72,39 @@ Route::get('tipoNivel',[ TiponivelController::class , 'index']);
 Route::post('tipoNivel/update/{tiponivel}',[ TiponivelController::class , 'update']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// de armin
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/cuenta-plan',[CuentaPlanController::class,'mostrar'])->name('cuenta-plan.index');
+    Route::get('/cuenta-tipo-plan',[CuentaPlanTipoController::class,'mostrar'])->name('cuenta-plan-tipo.index');
+
+    Route::get('/comprobante',[ComprobanteController::class,'mostrar'])->name('comprobante.index');
+
+});
+
+Route::get('/example',function (){
+    return cuantas_plan_padre();
+});
+
+
+//ericka lopez santos
+
+Route::get('/usuario/index', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageindex']);
+Route::get('/usuario/create', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pagecreate']);
+Route::get('/usuario/edit/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageedit']);
+Route::get('/usuario/show/{idusuario}', [App\Http\Controllers\Seguridad\UsuarioController::class, 'pageshow']);
+
+Route::get('/grupousuario/index', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pageindex']);
+Route::get('/grupousuario/create', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pagecreate']);
+Route::get('/grupousuario/edit/{idgrupousuario}', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pageedit']);
+Route::get('/grupousuario/show/{idgrupousuario}', [App\Http\Controllers\Seguridad\GrupoUsuarioController::class, 'pageshow']);
+
+Route::get('/formulario/index', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageindex']);
+Route::get('/formulario/asignar', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageasignar']);
+
+Route::get('/formulario/create', [App\Http\Controllers\Seguridad\FormularioController::class, 'pagecreate']);
+Route::get('/formulario/edit/{idformulario}', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageedit']);
+Route::get('/formulario/show/{idformulario}', [App\Http\Controllers\Seguridad\FormularioController::class, 'pageshow']);

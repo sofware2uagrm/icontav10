@@ -1,0 +1,14 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/usuario_index.js": "/js/usuario_index.js",
+    "/js/usuario_create.js": "/js/usuario_create.js",
+    "/js/usuario_edit.js": "/js/usuario_edit.js",
+    "/js/usuario_show.js": "/js/usuario_show.js",
+    "/js/grupousuario_index.js": "/js/grupousuario_index.js",
+    "/js/grupousuario_create.js": "/js/grupousuario_create.js",
+    "/js/grupousuario_edit.js": "/js/grupousuario_edit.js",
+    "/js/grupousuario_show.js": "/js/grupousuario_show.js",
+    "/js/formulario_index.js": "/js/formulario_index.js",
+    "/js/formulario_asignar.js": "/js/formulario_asignar.js",
+    "/css/app.css": "/css/app.css"
+}
