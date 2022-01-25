@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class EmpresaController extends Controller
@@ -15,7 +16,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas=Empresa::all();
+        $empresas=Empresa::where('user_id','=', Auth::user()->id)->get();
      
         return view('empresas.index',compact('empresas'));
         //
@@ -97,7 +98,9 @@ class EmpresaController extends Controller
         else{
             $empresa['logo']=null;
         }
-          Empresa::insert($empresa);
+        $empresa['user_id']=  Auth::user()->id;
+    
+        Empresa::insert($empresa);
 
 //        return response()->json($datosEmpleado);
         return redirect()->route('empresas.index')->with('mensaje','Empleado agregado con éxito');  

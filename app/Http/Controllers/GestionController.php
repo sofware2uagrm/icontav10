@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GestionController extends Controller
 {
@@ -15,7 +16,8 @@ class GestionController extends Controller
   
 
     public function index()
-    {   $gestions=Gestion::all();
+    {  
+        $gestions=Gestion::all();
         return view('gestions.index',compact('gestions'));
         
     }
