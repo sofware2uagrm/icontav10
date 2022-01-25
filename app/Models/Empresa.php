@@ -13,4 +13,9 @@ class Empresa extends Model
         //CONSULTA para eliminar todo:
         $this->truncate();
     }
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

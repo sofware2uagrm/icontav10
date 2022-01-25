@@ -437,6 +437,15 @@ return [
                     'icon_color' => 'cyan',
                     'can' => 'icontav.gestion.actualizar_saldos_contables',
                 ],
+                [
+                    'text' => ' empresa actual',
+                    'url'  => 'datosdelaempresa',
+                    'icon' => 'fas fa-fw fa-file',
+                    
+                       
+        
+                
+                ],
             ],
         ],
         [

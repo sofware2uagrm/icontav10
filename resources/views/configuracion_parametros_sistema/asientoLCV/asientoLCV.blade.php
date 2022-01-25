@@ -19,7 +19,7 @@
             <a class="btn btn-dark" href="{{asset('formatoDocumento')}}"><i class="bi bi-file-earmark-bar-graph"></i> Formato De Documento</a>
             <a class="btn btn-dark" href="{{asset('firmaReporte')}}"><i class="bi bi-brush"></i> Firma De Reportes</a>
             <a class="btn btn-dark" href="{{asset('proyecto')}}"><i class="bi bi-filter-square"></i> Proyectos</a>
-            <a class="btn btn-dark" href="{{asset('asientoLCV')}}"><i class="bi bi-filter-circle"></i> Asientos LCV</a>
+            <a class="btn btn-dark" href="{{asset('asientoLCV')}}"><i class="bi bi-filter-circle"></i> Asientos RCV</a>
             <a class="btn btn-dark" href="{{asset('tipoNivel')}}"> <i class="bi bi-sort-up"></i> Nivel</a>   
         </div>
    
@@ -29,15 +29,31 @@
                         <form method="POST" action="{{asset('asientoLCV/update')}}/{{$dato['id']}}">
                             @csrf 
                             <input id="id_asiento" type="hidden" value="{{$dato['id']}}">
-                            <label class="text-primary " >Modalidad de Asientos Automaticos LCV</label> 
+                            <label class="text-primary " >Modalidad de Asientos Automaticos RCV</label> 
                             <br>
                             <div class="mb-3">
-                                <label >Generar Asientos Contables Automaticos para LCV </label> 
+                                <label >Generar Asientos Contables Automaticos para RCV </label> 
                                 <select id="generar_asientos"  name="generar_asientos" required>
                                     <option @if ($dato->generar_asientos == 0) {{ 'selected' }} @endif value="0">NINGUNO</option>
                                     <option @if ($dato->generar_asientos == 1) {{ 'selected' }} @endif value="1">ITERACTIVO</option>
                                     <option @if ($dato->generar_asientos == 2) {{ 'selected' }} @endif value="2">AUTOMATICO</option>
                                 </select> 
+                            </div>
+                            <label class="text-primary " >Valor De Impuesto</label> 
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label >Credito Fiscal</label> 
+                                        <input id="credito_fiscal" type="text" class="form-control" name="credito_fiscal" value="{{$dato->credito_Fiscal}}" placeholder="escriba su porcenta en numero" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label >IT</label> 
+                                        <input id="it" type="text" class="form-control" name="it" value="{{$dato->IT}}" placeholder="escriba su porcenta en numero" required>
+                                    </div>
+                                </div>
+                                <div class="col" >
+
+                                </div>
                             </div>
                             <br>
                             <br>
@@ -76,6 +92,8 @@
 $('#forasiento').submit(function(e){
     e.preventDefault();
     var generar_asientos = $("#generar_asientos").val();
+    var credito_fiscal = $("#credito_fiscal").val();
+    var it = $("#it").val();
     var id = $("#id_asiento").val();
     var _token2 = $("input[name=_token]").val();
     var link="{{asset('')}}"+"asientoLCV/update/"+id;
@@ -85,6 +103,8 @@ $('#forasiento').submit(function(e){
         data:{
             id:id,
             generar_asientos:generar_asientos,
+            credito_fiscal:credito_fiscal,
+            it:it,
             _token:_token2
         },
         success:function(response){

@@ -21,7 +21,7 @@
             <a class="btn btn-dark" href="{{asset('formatoDocumento')}}"><i class="bi bi-file-earmark-bar-graph"></i> Formato De Documento</a>
             <a class="btn btn-dark" href="{{asset('firmaReporte')}}"><i class="bi bi-brush"></i> Firma De Reportes</a>
             <a class="btn btn-dark" href="{{asset('proyecto')}}"><i class="bi bi-filter-square"></i> Proyectos</a>
-            <a class="btn btn-dark" href="{{asset('asientoLCV')}}"><i class="bi bi-filter-circle"></i> Asientos LCV</a>
+            <a class="btn btn-dark" href="{{asset('asientoLCV')}}"><i class="bi bi-filter-circle"></i> Asientos RCV</a>
             <a class="btn btn-dark" href="{{asset('tipoNivel')}}"> <i class="bi bi-sort-up"></i> Nivel</a>   
         </div>
 
@@ -36,15 +36,15 @@
                         <div class="mb-3">
                             <label >Habilitar la Referencia en cada Registro </label> 
                             <select  name="habilitar_ref" id="habilitar_ref" required>
-                                <option @if ($dato->habilitar_ref == 0) {{ 'selected' }} @endif value="0">SI</option>
-                                <option @if ($dato->habilitar_ref == 1) {{ 'selected' }} @endif value="1">NO</option>
+                                <option @if ($dato->habilitar_ref == 1) {{ 'selected' }} @endif value="1">SI</option>
+                                <option @if ($dato->habilitar_ref == 0) {{ 'selected' }} @endif value="0">NO</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label >Imprimir el Nombre de la Cuenta Mayor en Comprobantes</label> 
                             <select  name="imprimir_nombre_comprobante" id="imprimir_nombre_comprobante" required>
-                                <option @if ($dato->imprimir_nombre_comprobante == 0) {{ 'selected' }} @endif value="0">SI</option>
-                                <option @if ($dato->imprimir_nombre_comprobante == 1) {{ 'selected' }} @endif value="1">NO</option>
+                                <option @if ($dato->imprimir_nombre_comprobante == 1) {{ 'selected' }} @endif value="1">SI</option>
+                                <option @if ($dato->imprimir_nombre_comprobante == 0) {{ 'selected' }} @endif value="0">NO</option>
                             </select>
                         </div>
                         <label class="text-primary">Formato en Comprobante y Reportes</label> 
@@ -52,8 +52,8 @@
                         <div class="mb-3">
                             <label >Mostrar la fecha y hora de impresion del documento </label> 
                             <select  name="mostrar_fecha_hora" id="mostrar_fecha_hora" required>
-                                <option @if ($dato->mostrar_fecha_hora == 0) {{ 'selected' }} @endif value="0">SI</option>
-                                <option @if ($dato->mostrar_fecha_hora == 1) {{ 'selected' }} @endif value="1">NO</option>
+                                <option @if ($dato->mostrar_fecha_hora == 1) {{ 'selected' }} @endif value="1">SI</option>
+                                <option @if ($dato->mostrar_fecha_hora == 0) {{ 'selected' }} @endif value="0">NO</option>
                             </select>
                         </div>
                         <br>

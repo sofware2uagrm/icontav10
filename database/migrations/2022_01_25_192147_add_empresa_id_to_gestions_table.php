@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsientoLCVSTable extends Migration
+class AddEmpresaIdToGestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateAsientoLCVSTable extends Migration
      */
     public function up()
     {
-        Schema::create('asiento__l_c_v_s', function (Blueprint $table) {
-            $table->id();
-            $table->integer('generar_asientos');
-            $table->integer('credito_Fiscal');
-            $table->integer('IT');
-            $table->timestamps();
+        Schema::table('gestions', function (Blueprint $table) {
+            $table->string('empresa_id')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateAsientoLCVSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asiento__l_c_v_s');
+        Schema::table('gestions', function (Blueprint $table) {
+            $table->dropColumn('empresa_id');
+        });
     }
 }
