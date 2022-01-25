@@ -16,8 +16,8 @@ class GestionController extends Controller
   
 
     public function index()
-    {  
-        $gestions=Gestion::all();
+    {//<h1></h1>  
+        $gestions=Gestion::where('empresa_id','=',session('empresa_id'))->get();
         return view('gestions.index',compact('gestions'));
         
     }
@@ -62,7 +62,8 @@ class GestionController extends Controller
         Gestion::create([
         'descripcion'=> "$request->descripcion",
         'fecha_ini'=>$request->fecha,
-        'fecha_fin'=>$request->fecha2
+        'fecha_fin'=>$request->fecha2,
+        'empresa_id'=>session('empresa_id')
         ]);
     }
     else{
@@ -176,7 +177,7 @@ class GestionController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    /**
+    /**example
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Gestion  $gestion

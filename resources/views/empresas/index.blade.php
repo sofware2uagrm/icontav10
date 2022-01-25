@@ -1,12 +1,19 @@
  @extends('adminlte::page')
 @section('title', 'Dashboard') 
+
+
+   
+
 @section('content')
+
  @if(Session::has('mensaje'))
 {{Session::get('mensaje')}}
 @endif
-.<div class="card">
+<div class="card">
     <div class="card-header">
-        <a class="btn btn-secondary" href="{{url('/empresas/create')}}">NUEVO  REGISTRO</a>
+        <strong> Razon Social:{{session('nombre')}}</strong> 
+        <br>
+    <a class="btn btn-secondary" href="{{url('/empresas/create')}}">NUEVO  REGISTRO</a>
     </div>
     <div class="card-body">
 
@@ -62,6 +69,7 @@
         {{--       <td class="font-italic ">{{ $empresa->ci_responsable}}</td> --}}
                 <td>
                     <a class ="btn btn-primary btn-sm" href="{{ route('empresas.edit',$empresa) }}">Editar</a>   
+                    <a class ="btn btn-primary btn-sm" href="{{ route('empresas.show',$empresa) }}">Modifcar</a>   
 
                 {{-- </td>
                 <td>  --}}
@@ -80,6 +88,10 @@
 </div>
 
 </div>
+
+
+        
+
 </div>
 @stop
  

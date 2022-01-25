@@ -6,7 +6,7 @@ use App\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Session;
 class EmpresaController extends Controller
 {
     /**
@@ -83,7 +83,8 @@ class EmpresaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {       $empresa= request()->except('_token');
+    { 
+             $empresa= request()->except('_token');
         $request->validate([
             'razonsocial'=>'required',
             'licencia'=>'required',
@@ -117,13 +118,13 @@ class EmpresaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Empresa $empresa)
-    {
-      //  $sql = 'SELECT * FROM empresas';
-        //$products =Empresa::select($sql);
-        return $empresa;
+    { //return $empresa;
     
-
-    
+        session([
+            'empresa_id'=> "$empresa->id",
+            'nombre'=>"$empresa->razonsocial"
+        ]);
+    return  redirect()->route('empresas.index');
     }
 
 

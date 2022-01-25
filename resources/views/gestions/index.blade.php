@@ -6,7 +6,8 @@
 
 
 @section('content')
-
+<div class="card">
+    <strong> Razon Social:{{session('nombre')}}</strong> 
 
 <div><a class="btn btn-secondary" href="{{url('/gestions/create')}}">NUEVO  REGISTRO</a> </div>
 <table id="gestiontable" class="table table-light">
@@ -47,5 +48,6 @@
             @endforeach
         </tbody>
 </table>
+</div>
 
 @stop
