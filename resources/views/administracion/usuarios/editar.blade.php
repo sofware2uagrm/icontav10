@@ -10,20 +10,20 @@
 @section('content')
 
 <div class="container-fluid">
-    <h1 class="text-center" >Editar Usuarios</h1>   
-    <br>
-        <div class="mb-4 text-center">
-            <a class="btn btn-dark" href="{{asset('administracion')}}"> <i class="bi bi-coin"></i> Usuarios</a>
-            <a class="btn btn-dark" href="{{asset('administracion/roles')}}"><i class="bi bi-file-earmark-bar-graph"></i> Roles</a>
-        </div>
+
         <div class="card">
+
+            <div class="card-header">
+                <label class="card-title">Editar Usuarios</label> 
+            </div>
+
             <div class="card-body">
                 <form action="{{asset('administracion/usuarios/update')}}/{{$usuario->id}}" method="POST" > 
                     @csrf
                     <div class="row" >
                       <div class="col" >
                             <div class="mb-3">
-                                    <label>Nombre</label>
+                                    <label>Nombre de usuario</label>
                                     <input class="form-control" disabled type="text" id="nombre" name="nombre" value="{{$usuario->name}}"   placeholder="ingrese su nombre " />
                                     <span class="icon"><i class="lni lni-user"></i></span>
                                     @error('nombre')
@@ -56,7 +56,7 @@
                             </div>
                        </div>
                     </div>
-                      <a href="{{asset('administracion')}}" class="btn btn-primary" > Regresar </a>
+                      <a href="{{asset('administracion')}}" class="btn btn-danger" > Cancelar </a>
                       <button type="submit" class="btn btn-success"> Actualizar</button>
                 </form>
             </div>

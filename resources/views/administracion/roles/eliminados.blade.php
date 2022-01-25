@@ -10,22 +10,25 @@
 @section('content')
 
 <div class="container-fluid">
-    <h1 class="text-center" >Roles Eliminados</h1>   
-    <br>
-        <div class="mb-4 text-center">
-            <a class="btn btn-dark" href="{{asset('administracion')}}"> <i class="bi bi-coin"></i> Usuarios</a>
-            <a class="btn btn-dark" href="{{asset('administracion/roles')}}"><i class="bi bi-file-earmark-bar-graph"></i> Roles</a>
-        </div>
-        <div class="mb-4" >
-            <a class="btn btn-primary" href="{{asset('administracion/roles')}}"><i class="bi bi-brush"></i>regresar</a>
-        </div>
+
         <div class="card">
+
+            <div class="card-header">
+                <label class="card-title">Grupo de Usuarios Eliminados</label>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <a class="btn btn-primary" href="{{ asset('administracion/roles') }}"><i
+                                class="fas fa-arrow-alt-circle-left"> Regresar</i></a>
+                    </div>
+                </div>
+            </div>
+
             <div class="card-body">
                 <table id="tabla_empresa"  class=" table table-bordered table-sm">
                     <thead>
                         <th> id </th>
-                        <th> nombre </th>
-                        <th width="10px">  </th>
+                        <th> Nombre </th>
+                        <th width="10px"> Opción </th>
                         
                     </thead>
                     <tbody>   
@@ -34,7 +37,7 @@
                         <td>{{$rol['id']}}</td>
                         <td>{{$rol['name']}}</td>
                         <td>
-                            <a href="{{asset('administracion/roles/restaurar')}}/{{$rol['id']}}" class="btn btn-outline-secondary ">restaurar</a>
+                            <a href="{{asset('administracion/roles/restaurar')}}/{{$rol['id']}}" class="btn btn-outline-success "><i class="fas fa-trash-restore"> Recuperar</i></a>
                         </td>       
                     </tr>
                     @endforeach

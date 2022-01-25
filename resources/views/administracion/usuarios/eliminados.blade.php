@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 <!--//implementa la vista de adminlte -->
-@section('title' )
-<!--//agregamos un titulo  -->
+@section('title')
+    <!--//agregamos un titulo  -->
 
 @section('content_header')
 @stop
@@ -9,46 +9,48 @@
 
 @section('content')
 
-<div class="container-fluid">
-    <h1 class="text-center" >Usuarios Eliminados</h1>   
-    <br>
-        <div class="mb-4 text-center">
-            <a class="btn btn-dark" href="{{asset('administracion')}}"> <i class="bi bi-coin"></i> Usuarios</a>
-            <a class="btn btn-dark" href="{{asset('administracion/roles')}}"><i class="bi bi-file-earmark-bar-graph"></i> Roles</a>
-        </div>
-        <div class="mb-4" >
-            <a class="btn btn-primary" href="{{asset('administracion')}}"><i class="bi bi-brush"></i>regresar</a>
-        </div>
+    <div class="container-fluid">
         <div class="card">
+
+            <div class="card-header">
+                <label class="card-title">Usuarios Eliminados</label>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <a class="btn btn-primary" href="{{ asset('administracion') }}"><i
+                                class="fas fa-arrow-alt-circle-left"> Regresar</i></a>
+                    </div>
+                </div>
+            </div>
+
             <div class="card-body">
-                <table id="tabla_empresa"  class=" table table-bordered table-sm">
+                <table id="tabla_empresa" class=" table table-bordered table-sm">
                     <thead>
                         <th> id </th>
                         <th> Usuario </th>
-                        <th> correo </th>
-                        <th> rol </th>
-                        <th width="10px">  </th>
-                        
+                        <th> Correo </th>
+                        <th> Grupo de Usuarios </th>
+                        <th> Opción</th>
                     </thead>
-                    <tbody>   
-                    @foreach ($usuarios as $usuario)     
-                    <tr>
-                        <td>{{$usuario['id']}}</td>
-                        <td>{{$usuario['name']}}</td>
-                        <td>{{$usuario['email']}}</td> 
-                        <td>{{$usuario->roles['0']->name }}</td>
-                        <td>
-                            <a href="{{asset('administracion/usuarios/restaurar')}}/{{$usuario['id']}}" class="btn btn-outline-secondary ">restaurar</a>
-                        </td>       
-                    </tr>
-                    @endforeach
-               
+                    <tbody>
+                        @foreach ($usuarios as $usuario)
+                            <tr>
+                                <td>{{ $usuario['id'] }}</td>
+                                <td>{{ $usuario['name'] }}</td>
+                                <td>{{ $usuario['email'] }}</td>
+                                <td>{{ $usuario->roles['0']->name }}</td>
+                                <td width="5px">
+                                    <a href="{{ asset('administracion/usuarios/restaurar') }}/{{ $usuario['id'] }}"
+                                        class="btn btn-outline-success "><i class="fas fa-trash-restore"> Recuperar</i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</div>
+    </div>
 
 @stop
 
@@ -61,7 +63,9 @@
 <!--//agregamos css -->
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
 @stop
 
 <!--//agregamos Java Script-->

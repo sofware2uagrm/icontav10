@@ -72,7 +72,7 @@ Route::post('eliminacion/eliminar',[ EliminacionRegistroController::class , 'eli
 
 //administracion
 
-Route::get('administracion', [administracion::class,'index']);
+Route::get('administracion', [administracion::class,'index'],auth());
 Route::get('administracion/usuarios/eliminados', [administracion::class,'eliminados']);
 Route::get('administracion/usuarios/create', [administracion::class,'create']);
 Route::get('administracion/usuarios/restaurar/{id}',[ administracion::class , 'restaurar']);
@@ -80,6 +80,7 @@ Route::get('administracion/usuarios/destroy/{id}',[ administracion::class , 'des
 Route::post('administracion/usuarios/store', [administracion::class,'store']);
 Route::get('administracion/usuarios/edit/{id}', [administracion::class,'edit']);
 Route::post('administracion/usuarios/update/{id}', [administracion::class,'update']);
+Route::get('search/cursos','SearchController@cursos')->name('search.cursos');
 
 //roles
 

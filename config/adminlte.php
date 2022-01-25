@@ -50,12 +50,12 @@ return [
     |
     */
 
-    'logo' => "<b>ICONTAB</b> $anio",
+    'logo' => "<b>CONTASAYUBÚ</b> $anio",
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'CONTASAYUBÚ',
 
     /*
     |--------------------------------------------------------------------------
@@ -242,9 +242,30 @@ return [
         ],
         [
             'text'        => 'Administracion',
-            'url'         => 'administracion',
+            'url'         => '#',
             'icon'        => '	fas fa-database',
             'topnav_right' => true,
+            'can'           => 'icontav.administracion',
+            'submenu' => [
+                [
+                    'text' => 'Usuarios',
+                    'url'  => 'administracion',
+                    'icon'        => 'fas fa-user',
+                    'icon_color' => 'cyan',
+                ],
+                [
+                    'text' => 'Grupo Usuarios',
+                    'url'  => 'administracion/roles',
+                    'icon'        => 'fas fa-users',
+                    'icon_color' => 'cyan',
+                ],
+                // [
+                //     'text' => 'Asignar Formulario',
+                //     'url'  => 'administracion/permisos',
+                //     'icon'        => 'fas fa-file-invoice',
+                //     'icon_color' => 'cyan',
+                // ],
+            ],
         ],
 
         // Sidebar items:

@@ -10,13 +10,11 @@
 @section('content')
 
 <div class="container-fluid">
-    <h1 class="text-center" >Editar Rol</h1>   
-    <br>
-        <div class="mb-4 text-center">
-            <a class="btn btn-dark" href="{{asset('administracion')}}"> <i class="bi bi-coin"></i> Usuarios</a>
-            <a class="btn btn-dark" href="{{asset('administracion/roles')}}"><i class="bi bi-file-earmark-bar-graph"></i> Roles</a>
-        </div>
+
         <div class="card">
+            <div class="card-header">
+                <label class="card-title">Editar Grupo de Usuarios</label> 
+            </div>
             <div class="card-body">
                 <form action="{{asset('administracion/roles/update')}}/{{$roles->id}}" method="POST" > 
                     @csrf
@@ -31,8 +29,8 @@
                                 @enderror
                         </div>
                         
-                      <a href="{{asset('administracion/roles')}}" class="btn btn-primary" > Regresar </a>
-                      <button type="submit" class="btn btn-success"> Actualizar</button>
+                      <a href="{{asset('administracion/roles')}}" class="btn btn-outline-danger" > Cancelar </a>
+                      <button type="submit" class="btn btn-outline-success"> Actualizar</button>
                 </form>
             </div>
         </div>

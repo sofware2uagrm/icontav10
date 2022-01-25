@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 <!--//implementa la vista de adminlte -->
-@section('title' )
-<!--//agregamos un titulo  -->
+@section('title')
+    <!--//agregamos un titulo  -->
 
 @section('content_header')
 @stop
@@ -9,33 +9,34 @@
 
 @section('content')
 
-<div class="container-fluid">
-    <h1 class="text-center" >Roles</h1>   
-    <br>
-        <div class="mb-4 text-center">
-            <a class="btn btn-dark" href="{{asset('administracion')}}"> <i class="bi bi-coin"></i> Usuarios</a>
-            <a class="btn btn-dark" href="{{asset('administracion/roles')}}"><i class="bi bi-file-earmark-bar-graph"></i> Roles</a>
-        </div>
-        <div class="mb-4" >
-           
-        </div>
+    <div class="container-fluid">
         <div class="card">
+            <div class="card-header">
+                <label class="card-title">Marcar el Acceso a los Formularios del Sistema</label>
+            </div>
             <div class="card-body">
                 <div class="container-fluid">
-                    <form action="{{asset('administracion/permisos/update')}}/{{$id_aux}}" method="POST">
+                    <form action="{{ asset('administracion/permisos/update') }}/{{ $id_aux }}" method="POST">
                         @csrf
                         @foreach ($permisos as $permiso)
-                            @php($per=$permiso['id'])
-                            @php($sw=0)
+                            @php($per = $permiso['id'])
+                            @php($sw = 0)
                             @foreach ($rol_permiso as $rol_per)
-                                @if ($per==$rol_per['permission_id'])
-                                @php($sw=1)
+                                @if ($per == $rol_per['permission_id'])
+                                    @php($sw = 1)
                                 @endif
                             @endforeach
                             <div class="mb-1">
-                                <input class="form-check-input" type="checkbox" @if ($sw==1){{'checked'}} @endif value ="{{$permiso['id']}}" name= "permisos[]" >
-                                <label for="">{{$permiso['name']}}</label>   
-                            </div>  
+                                <ul data-widget="treeview">
+
+
+                                    <input class="form-check-input" type="checkbox" @if ($sw == 1){{ 'checked' }} @endif
+                                        value="{{ $permiso['id'] }}" name="permisos[]">
+                                    <label hidden for="">{{ $permiso['name'] }}</label>
+                                    <label for="">{{ $permiso['descripcion'] }}</label>
+
+                                </ul>
+                            </div>
                         @endforeach
 
                         <br>
@@ -46,7 +47,7 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 
 @stop
 
@@ -59,7 +60,9 @@
 <!--//agregamos css -->
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
 @stop
 
 <!--//agregamos Java Script-->

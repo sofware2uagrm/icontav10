@@ -31,7 +31,9 @@ class administracion extends Controller
         $user=$user->where('estado',1);
        // return $user;
         $datos=['usuarios' => $user];
-        echo view('administracion/usuarios/index',$datos);
+        $roles = Role::all();
+        $datos2 =['roles'=>$roles];
+        echo view('administracion/usuarios/index',$datos,$datos2);
     }
 
     public function indexROL()
