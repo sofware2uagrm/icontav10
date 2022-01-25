@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // leonel
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\GestionController;
+use App\Http\Controllers\ActualController;
 // lucas
 use App\Http\Controllers\MonedaController;
 use App\Http\Controllers\AsientoLCVController;
