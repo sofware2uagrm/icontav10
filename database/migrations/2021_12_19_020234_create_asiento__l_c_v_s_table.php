@@ -16,6 +16,8 @@ class CreateAsientoLCVSTable extends Migration
         Schema::create('asiento__l_c_v_s', function (Blueprint $table) {
             $table->id();
             $table->integer('generar_asientos');
+            $table->integer('credito_Fiscal');
+            $table->integer('IT');
             $table->timestamps();
         });
     }

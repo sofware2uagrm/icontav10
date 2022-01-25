@@ -73,11 +73,16 @@ class AsientoLCVController extends Controller
     public function update(Request $request, asiento_LCV $asiento_LCV)
     {
         $alcv=$asiento_LCV->generar_asientos;
+        $creditoF=$asiento_LCV->credito_fiscal;
+        $itF=$asiento_LCV->it;
         $asiento_LCV->generar_asientos=$request->generar_asientos;
+        $asiento_LCV->credito_Fiscal=$request->credito_fiscal;
+        $asiento_LCV->it=$request->it;
+
         
         $asiento_LCV->update();
 
-        if($alcv != $request->generar_asientos){
+        if($alcv != $request->generar_asientos || $creditoF!=$request->credito_fiscal || $itF!=$request->it){
         return redirect()->to(asset('asientoLCV'));
         }
     }

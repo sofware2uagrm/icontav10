@@ -25,10 +25,12 @@ class ConfiguracionDeParametrosDelSistemaSeeder extends Seeder
         ]);
         asiento_LCV::create([
             'generar_asientos'=>1,
+            'credito_Fiscal'=>13,
+            'IT'=>3,
         ]);  
         formato_doc::create([
-            'habilitar_ref'=>1,
-            'imprimir_nombre_comprobante'=>1,
+            'habilitar_ref'=>0,
+            'imprimir_nombre_comprobante'=>0,
             'mostrar_fecha_hora'=>1,
         ]);
         firma_reporte::create([
@@ -36,16 +38,16 @@ class ConfiguracionDeParametrosDelSistemaSeeder extends Seeder
            'firma1'=> '',
            'firma2'=> 'condator',
            'firma3'=> 'gerente',
-           'opcion_firma_enteresado'=>-1,
-           'activo_opcion'=>0,
+           'opcion_firma_enteresado'=>0,
+           'activo_opcion'=>1,
         ]);
         firma_reporte::create([
             'nombre_reporte' => 'Comprobante De Traspaso' ,
             'firma1'=> '',
             'firma2'=> 'condator',
             'firma3'=> 'gerente',
-            'opcion_firma_enteresado'=>-1,
-            'activo_opcion'=>0,
+            'opcion_firma_enteresado'=>0,
+            'activo_opcion'=>1,
          ]);
          firma_reporte::create([
             'nombre_reporte' => 'Comprobante De Egreso' ,
@@ -60,8 +62,8 @@ class ConfiguracionDeParametrosDelSistemaSeeder extends Seeder
             'firma1'=> '',
             'firma2'=> 'condator',
             'firma3'=> 'gerente',
-            'opcion_firma_enteresado'=>-1,
-            'activo_opcion'=>0,
+            'opcion_firma_enteresado'=>0,
+            'activo_opcion'=>1,
          ]);
          proyecto::create([
             'habilitar_contabilidad'=>1,
