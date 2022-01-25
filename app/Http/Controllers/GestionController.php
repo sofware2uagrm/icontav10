@@ -53,7 +53,10 @@ class GestionController extends Controller
     { 
         $gestion= request()->except('_token');
        if($request->fecha_ini==null)
-       {
+       {$request->validate([
+        'fecha'=>'required',
+        'fecha2'=>'required'
+        ]);
         Gestion::create([
         'descripcion'=> "$request->descripcion",
         'fecha_ini'=>$request->fecha,
@@ -62,6 +65,10 @@ class GestionController extends Controller
     }
     else{
 
+        $request->validate([
+            'fecha_ini'=>'required',
+            'fecha_fin'=>'required'
+            ]);
         Gestion::create([
             'descripcion'=> "$request->descripcion",
             'fecha_ini'=>$request->fecha_ini,
@@ -133,14 +140,17 @@ class GestionController extends Controller
          $ges=Gestion::findOrfail($gestion->id);
          
         if($request->fecha_ini==null)
-       { 
+       {  
        $ges['descripcion']="$request->descripcion";
        $ges['fecha_ini']="$request->fecha";
        $ges['fecha_fin']="$request->fecha2";
        $ges->update();  
     }
     else{
-      
+        $request->validate([
+            'fecha_ini'=>'required',
+            'fecha_fin'=>'required'
+            ]);
        $ges['descripcion']="$request->descripcion";
        $ges['fecha_ini']="$request->fecha_ini";
        $ges['fecha_fin']="$request->fecha_fin";

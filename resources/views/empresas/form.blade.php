@@ -39,7 +39,6 @@
 
 <label for="estado">ESTADO</label>
 <select name="estado" id="estado" class="form-control">
-    <option value="">SELECIONE SI ESTA ACTIVO O NO</option>
     <option value="{{isset($empresa->estado)?$empresa->estado:""}}">{{isset($empresa->estado)?$empresa->estado:""}}</option>
     <option value="activo">ACTIVO</option>
     <option value="inactivo">PASIVO</option>
@@ -50,7 +49,7 @@
 <label for="logo">LOGO</label>
 @if(isset($empresa->logo))
 
-<img id="blah" src="{{Storage::url($empresa->logo)}}" width="180" alt="">
+<img id="blah" src="{{Storage::url($empresa->logo)}}" width="120" alt="">
     
 @else
     

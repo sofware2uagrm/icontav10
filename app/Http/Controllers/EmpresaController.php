@@ -83,11 +83,20 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {       $empresa= request()->except('_token');
-         
-        if($request->hasFile('logo')){
+        $request->validate([
+            'razonsocial'=>'required',
+            'licencia'=>'required',
+            'nit'=>'required',
+            'telefono'=>'required',
+            'ciudad'=>'required',
+            ]);   
+       // return $request->hasFile('logo');
+            if($request->hasFile('logo')){
                 $empresa['logo']=$request->file('logo')->store('uploads','public');
         }
-
+        else{
+            $empresa['logo']=null;
+        }
           Empresa::insert($empresa);
 
 //        return response()->json($datosEmpleado);
@@ -142,6 +151,9 @@ class EmpresaController extends Controller
             $empresa=Empresa::findOrFail($empresa->id);
             Storage::delete('public/'.$empresa->logo);
             $datosEmpresa['logo']=$request->file('logo')->store('uploads','public');
+        }
+        else{
+            $empresa['logo']=null;
         }
 
         Empresa::where('id','=',$empresa->id)->update($datosEmpresa);
