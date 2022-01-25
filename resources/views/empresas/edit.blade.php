@@ -1,89 +1,63 @@
 
 
-
-
-
 @extends('adminlte::page')
-<!--//implementa la vista de adminlte -->
-@section('title' )
-<!--//agregamos un titulo  -->
 
-@section('content_header')
-    <h1>Bienbenidos Compañeros De Software 2</h1> 
-@stop
-<!--//Agregamos un header a nuestra pagina -->
+@section('title', 'Dashboard')
+
 
 @section('content')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <form action="{{ route('empresas.update',$empresa)}}" method="post" enctype="multipart/form-data">
     @csrf
     {{method_field('PATCH')}}
     @include('empresas.form',['modo'=>'Editar']);
     
+  @stop
+  
+@section('css')
+
+<style>
+    .leo{
+        position: relative;
+        padding-bottom: 53%;
+    } 
+    .leo img{
+       position: absolute;
+        object-fit: cover;
+        width: auto;
+        height: 230px;
+    } 
+</style>
+@endsection
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+/*  document.getElementById("file").addEventListener('change',cambiarImage);
+  function cambiarImagen(event){
+      var file=event.target.files[0];
+      var reader =new FileReader();
+   reader.onload=(event)=>{
+          document.getElementBylId("picture").setAttribute('scr',event.target.result);
+        
+    }reader.readerAsDataURL(file);
+} */
+
+function readURL(input) {
+  if (input.files && input.files[0]) { //Revisamos que el input tenga contenido
+    var reader = new FileReader(); //Leemos el contenido
+    
+    reader.onload = function(e) { //Al cargar el contenido lo pasamos como atributo de la imagen de arriba
+      $('#blah').attr('src', e.target.result);
+    }
+    /*  */
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function() { //Cuando el input cambie (se cargue un nuevo archivo) se va a ejecutar de nuevo el cambio de imagen y se verá reflejado.
+  readURL(this);
+});
+</script>
 
 
-
-
- @stop
-
- @section('css')
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">   
- 
- @endsection
- 
- @section('js') 
- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
- <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
- 
- <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
- <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
- 
- <script>
- $(document).ready(function() {
-     $('#empresatable').DataTable(
-         {
- 
-             responsive:true,
-             autoWhidh:false,
-         
-     
-         "language": {
-             "lengthMenu": "Mostrar _MENU_ registros por paginas",
-             "zeroRecords": "nada encontrado - disculpa",
-             "info": "Mostrando la pagina _PAGE_ de _PAGES_",
-             "infoEmpty": "No records available",
-             "infoFiltered": "(filtered from _MAX_ registros totales)",
-             'search':'buscar:',
-             'paginate':{
-             'next':'siguiente',
-             'previous':'anterior'
-         }
-         }
-             }    );
- } );
- 
- 
- 
- 
- </script>
-     
- @endsection
- 
+@endsection

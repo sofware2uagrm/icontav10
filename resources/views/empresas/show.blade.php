@@ -1,18 +1,19 @@
 
 
+
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
 
 
 @section('content')
-<form action="{{ route('empresas.store' ) }}" method="post"  enctype="multipart/form-data">
-@csrf
-@include('empresas.form',['modo'=>'Crear']);
-</form>
-
-@stop
- 
+<form action="{{ route('empresas.update',$empresa)}}" method="post" enctype="multipart/form-data">
+    @csrf
+    {{method_field('PATCH')}}
+    @include('empresas.form',['modo'=>'Editar']);
+    
+  @stop
+  
 @section('css')
 
 <style>
@@ -61,17 +62,3 @@ $("#imgInp").change(function() { //Cuando el input cambie (se cargue un nuevo ar
 
 
 @endsection
-       
-      {{--   <div class="row mb-3">
-            {!! Form::open() !!}
-            <div class="image-wrapper">
-                <img id="picture" src="https://img2.freepng.es/20180423/jee/kisspng-accountant-accounting-cartoon-accounting-financial-5ade05d54ec3d5.5356307815244999253226.jpg" alt="">
-
-            </div>
-           <div class="form-group">
-            {!! Form::label('file ', 'INGRESE LA FOTO') !!}
-
-            {!! Form::file('file',['class'=>'form-control-file']) !!}
-           </div>
-           
-            {!! Form::close() !!} --}}
