@@ -6,11 +6,16 @@
 
 
 @section('content')
+<div class="card">
+<div class="card-body">
+
 <form action="{{ route('empresas.store' ) }}" method="post"  enctype="multipart/form-data">
 @csrf
 @include('empresas.form',['modo'=>'Crear']);
 </form>
 
+</div>
+</div>
 @stop
  
 @section('css')

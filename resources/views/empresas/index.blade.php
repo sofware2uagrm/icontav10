@@ -4,26 +4,31 @@
  @if(Session::has('mensaje'))
 {{Session::get('mensaje')}}
 @endif
+.<div class="card">
+    <div class="card-header">
+        <a class="btn btn-secondary" href="{{url('/empresas/create')}}">NUEVO  REGISTRO</a>
+    </div>
+    <div class="card-body">
 
-<div><a class="btn btn-secondary" href="{{url('/empresas/create')}}">NUEVO  REGISTRO</a> </div>
+ 
 <div class="container-fluid" id="contenidoTabla">
 <table id="empresatable" class="table table-light table-sm">
         <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>LOGO</th>
-                <th>Razon social</th>
+                <th>RAZON SOCIAL</th>
                 <th>NIT</th>
-                <th>Licencia</th>
-                <th>Celular</th>
-                <th>Ciudad </th>
-                <th>Actividad</th>
+                <th>LICENCIA</th>
+                <th>TELÉFONO</th>
+                <th>CIUDAD </th>
+                <th>ACTIVIDAD</th>
                 
-                <th>Sucursal</th>
-                <th>Estado</th>             
-                <th>Responsable</th>
+                <th>SUCURSAL</th>
+                <th>ESTADO</th>             
+              {{--   <th>RESPONSABLE</th> --}}
                 {{-- <th></th> --}}
-                <th>ci_responsable</th>
+               {{--  <th>CI RESPONSABLE</th> --}}
                 <th></th>
                
                
@@ -34,7 +39,7 @@
             <tr>
                 <td> <p class="font-italic "> {{ $empresa->id}}</p></td>
                 <td> 
-                <img src="{{env('APP_URL')}}{{$empresa->logo}}" width="100" alt="">    
+                <img src="{{Storage::url($empresa->logo)}}" width="100" alt="">    
                 </td>
 
                 <td class="font-italic  "> {{ $empresa->razonsocial}}</td>
@@ -51,10 +56,10 @@
                 
 
 
+{{-- 
+              <td class="font-italic ">{{ $empresa->responsable}}</td> --}}
 
-              <td class="font-italic ">{{ $empresa->responsable}}</td>
-
-              <td class="font-italic ">{{ $empresa->ci_responsable}}</td>
+        {{--       <td class="font-italic ">{{ $empresa->ci_responsable}}</td> --}}
                 <td>
                     <a class ="btn btn-primary btn-sm" href="{{ route('empresas.edit',$empresa) }}">Editar</a>   
 
@@ -73,7 +78,10 @@
         </tbody>
 </table>
 </div>
- @stop
+
+</div>
+</div>
+@stop
  
 
 @section('css')

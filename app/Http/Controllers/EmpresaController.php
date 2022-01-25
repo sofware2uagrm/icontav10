@@ -20,6 +20,13 @@ class EmpresaController extends Controller
         return view('empresas.index',compact('empresas'));
         //
     }
+    
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     /**
      * Show the form for creating a new resource.
@@ -32,6 +39,42 @@ class EmpresaController extends Controller
     
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Empresa  $empresa
+     * @return \Illuminate\Http\Response
+     */
+
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Empresa  $empresa
+     * @return \Illuminate\Http\Response
+     */
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Empresa  $empresa
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Empresa  $empresa
+     * @return \Illuminate\Http\Response
+     */
+ 
     /**
      * Store a newly created resource in storage.
      *
@@ -52,6 +95,8 @@ class EmpresaController extends Controller
    
     
     }
+   
+
 
     /**
      * Display the specified resource.
@@ -103,6 +148,7 @@ class EmpresaController extends Controller
         $empresa=Empresa::findOrFail($empresa->id);
         return view('empresas.edit', compact('empresa'));
     }
+ 
 
     /**
      * Remove the specified resource from storage.
@@ -113,13 +159,17 @@ class EmpresaController extends Controller
     public function destroy(Empresa $empresa)
     {
         $empresas=Empresa::findOrFail($empresa->id);
-        if(Storage::delete('public/'.$empresas->foto)){
+        if(Storage::delete('public/'.$empresas->logo)){
 
             Empresa::destroy($empresa->id);
-
         }
+       
 
-        return redirect('empresas.index')->with('mensaje','Empleado borrado');
+
+        return redirect()->route('empresas.index')->with('mensaje','Empleado borrado');
  
     }
+ 
+
+
 }

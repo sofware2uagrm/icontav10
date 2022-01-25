@@ -17,10 +17,12 @@ class CreateEmpresasTable extends Migration
             $table->id();
             $table->string('logo');
             $table->string('razonsocial');
-         $table->string('nit');
+            $table->string('licencia')->nullable();
+            $table->string('nit');
             $table->string('telefono');
             $table->string('ciudad');
             $table->string('actividad');
+            $table->string('direccion')->nullable();
             $table->string('responsable');
             $table->string('ci_responsable');
             $table->string('sucursal'); 
