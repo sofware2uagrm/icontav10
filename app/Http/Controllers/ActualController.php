@@ -10,12 +10,14 @@ class ActualController extends Controller
 {
     public function empresaactual()
     {
-        $empresa= Empresa::find(session('empresa_id'));
-        //return $empresa;
+      
 
-        if($empresa!=NULL){
+        if(session('empresa_id')){
+            $empresa= Empresa::find(session('empresa_id'));
+            //return $empresa;
         return view('empresas.edit',compact('empresa'));
-    }  return "no hay una empresa activa";
+    }
+    else{  return "no hay una empresa activa";}
     }
     public function gestionactual()
     {
